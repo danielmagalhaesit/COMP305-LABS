@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,9 @@ public class PlayerController : MonoBehaviour {
     // Private variables
     private Rigidbody2D rBody;
     private SpriteRenderer sRend;
+
+    public int[] objectCollected = { 0, 0, 0 };
+
     private Animator animator;
 
     private bool isGrounded = false;
@@ -27,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetAxis("JumpPink") > 0 && isGrounded)
+        if (Input.GetAxis("Jump") > 0 && isGrounded)
         {
             animator.SetBool("Ground", isGrounded);
             rBody.AddForce(new Vector2(0, jumpForce));
@@ -43,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 
         animator.SetFloat("vSpeed", rBody.velocity.y);
 
-        float moveHoriz = Input.GetAxis("HorizontalPink");
+        float moveHoriz = Input.GetAxis("Horizontal");
 
         // Pass horizontal velocity to animator (SPEED)
         animator.SetFloat("Speed", Mathf.Abs(moveHoriz));
@@ -59,4 +63,15 @@ public class PlayerController : MonoBehaviour {
             sRend.flipX = true;
         }
 	}
+    public void CollectObject(int i)
+    {
+        objectCollected[i] += 1;
+        //Debug.Log(objectCollected[i].ToString());
+    }
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
+
 }
+ 

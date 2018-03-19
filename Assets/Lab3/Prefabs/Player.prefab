@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 114212125457891192}
   m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
   defineGround:
     serializedVersion: 2
     m_Bits: 4294967039
+  objectCollected: 000000000000000000000000
 --- !u!212 &212958034578213078
 SpriteRenderer:
   m_ObjectHideFlags: 1
